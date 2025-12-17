@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MvcIntro.DAL;
 using MvcIntro.Models;
 using MvcIntro.ViewModels;
@@ -8,10 +9,11 @@ namespace MvcIntro.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IEmailService _emailService;
+
         public HomeController(AppDbContext context)
         {
             _context = context;
-            
         }
 
 
@@ -21,22 +23,21 @@ namespace MvcIntro.Controllers
         //    new Slider { Subtitle="Basliq 2", Title = "Komekci basliq 2", Descreption="Gullerden qalmadi 2", ImageURL="2-2-960x741.jpg",Order=2, IsDeleted=false, CreatedAt=DateTime.Now },
         //    new Slider {Subtitle = "Basliq 3", Title = "Komekci basliq 3", Descreption = "Gullerden qalmadi 3", ImageURL = "2-3-960x741.jpg", Order = 3, IsDeleted = false, CreatedAt = DateTime.Now}
         //};
-        public  IActionResult Index(int id)
+        public IActionResult Index()
         {
+            List<Slider> sliders = _context.Sliders.OrderBy(s => s.Order).ToList();
 
+            List<Product> products = _context.Products.Include(p => p.ProductImages.Where(pi=>pi.IsPrymary!=null)).ToList();
 
-            List<Slider> sliders = _context.Sliders.OrderBy(s=>s.Order).ToList();
-            //_context.AddRange(sliders);
-            //_context.SaveChanges();
-
-            HomeVM homeVM = new HomeVM()
+            HomeVM homeVM = new HomeVM
             {
-                Sliders = sliders.OrderBy(s=>s.Order).Take(2).ToList(),
+                Sliders = sliders,
+                Products = products
             };
 
             return View(homeVM);
         }
 
-       
+
     }
 }

@@ -4012,11 +4012,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\112\\Desktop\\MvcIntro\\MvcIntro.csproj",
+      "projectUniqueName": "C:\\Users\\112\\Desktop\\aspnetoyrenirem\\MvcIntro\\MvcIntro.csproj",
       "projectName": "MvcIntro",
-      "projectPath": "C:\\Users\\112\\Desktop\\MvcIntro\\MvcIntro.csproj",
+      "projectPath": "C:\\Users\\112\\Desktop\\aspnetoyrenirem\\MvcIntro\\MvcIntro.csproj",
       "packagesPath": "C:\\Users\\112\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\112\\Desktop\\MvcIntro\\obj\\",
+      "outputPath": "C:\\Users\\112\\Desktop\\aspnetoyrenirem\\MvcIntro\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

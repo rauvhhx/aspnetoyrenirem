@@ -13,8 +13,8 @@ namespace MvcIntro
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>(opt =>
             opt.UseSqlServer(
-    "Server=(localdb)\\MSSQLLocalDB;Database=ProniaAPA102DB;Trusted_Connection=True;TrustServerCertificate=True"
-));
+            builder.Configuration.GetConnectionString("Default")
+            ));
 
 
 
